@@ -1,0 +1,56 @@
+//font-family: 'Open Sans', sans-serif;
+//font-family: 'Quicksand', sans-serif;
+
+*{
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 10px;
+}
+
+h1{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 4rem;
+}
+
+.App {
+  text-align: center;
+}
+
+.note-wrapper {
+  background-color: #d5d5d5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.container{
+  text-align: left;
+  margin: 3rem;
+}
+
+.inner-wrapper{
+  width: 50rem;
+  background: #f2f2f2;
+  color: #343433;
+  font-size: 4.5rem;
+  border-radius: 1rem;
+}
+
+.input-block{
+  font-size: 2.5rem;
+
+  &.empty{
+    color: #ababab;
+  }
+}
+
+.button{
+  cursor: pointer;
+}

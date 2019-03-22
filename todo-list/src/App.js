@@ -1,25 +1,48 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import EmptyItem from './EmptyItem';
+import ListItems from './ListItems';
 
 class App extends Component {
+  state = {
+    data: []
+  };
+
+  addItem = (item) => {
+    const { data } = this.state;
+    // update state
+    this.setState({
+      data: [...data, { item: item, dateTime: Date.now()}],
+    });
+    this.updateList();
+  };
+
+  updateList() {
+    const { data } = this.state;
+
+    console.log('listArr...', data)
+  }
+
   render() {
+    const { data } = this.state;
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className="note-wrapper">
+          <div className="inner-wrapper">
+
+          <header className="App-header">
+            <h1>Todo app!</h1>
+          </header>
+          <div className="container">
+            <ListItems anything={this.anything}/>
+            <EmptyItem
+                addItem={this.addItem}
+            />
+          </div>
+          </div>
+
+        </div>
       </div>
     );
   }
