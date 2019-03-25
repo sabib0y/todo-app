@@ -5,13 +5,10 @@ class ListItems extends Component {
     return (
         <div className="input-block">
             <div className="item-wrapper">
-                <span className="fake-checkbox"></span>
-                <input
-                    type="text"
-                    placeholder="next item"
-                    ref={this.inputRef}
-                />
-                <span className="button" onClick={this.handleClick}>
+                <span className="checkbox"><input type="checkbox"/></span>
+                <p className="item">{this.props.items.item}</p>
+                <span className="button" onClick={this.props.handleRemove}>
+
             </span>
             </div>
         </div>

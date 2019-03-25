@@ -6,17 +6,13 @@ class EmptyItem extends Component {
     }
     inputRef = React.createRef();
 
-
-
     handleClick = () => {
         const inputVal = this.inputRef.current.value;
          if(inputVal){
             this.props.addItem(inputVal)
          }
-        console.log(this.inputRef.current.value);
+        this.inputRef.target.reset();
     };
-
-
 
 
     render() {

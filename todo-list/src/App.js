@@ -5,7 +5,8 @@ import ListItems from './ListItems';
 
 class App extends Component {
   state = {
-    data: []
+    data: [],
+    inputState:'',
   };
 
   addItem = (item) => {
@@ -14,13 +15,22 @@ class App extends Component {
     this.setState({
       data: [...data, { item: item, dateTime: Date.now()}],
     });
-    this.updateList();
+    // this.updateList();
   };
 
-  updateList() {
-    const { data } = this.state;
+  // updateList() {
+  //   const { data } = this.state;
+  //
+  //   console.log('listArr...', data)
+  // }
 
-    console.log('listArr...', data)
+
+  resetField(){
+
+  }
+
+  handleRemove() {
+    console.log('deleting')
   }
 
   render() {
@@ -35,9 +45,18 @@ class App extends Component {
             <h1>Todo app!</h1>
           </header>
           <div className="container">
-            <ListItems anything={this.anything}/>
+            {Object.keys(this.state.data).map((key, i) => (
+                <ListItems
+                    handleRemove={this.handleRemove}
+                    key={key}
+                    items={this.state.data[i]}
+                />
+              ))
+            }
+
             <EmptyItem
                 addItem={this.addItem}
+                value={this.state.inputState}
             />
           </div>
           </div>
