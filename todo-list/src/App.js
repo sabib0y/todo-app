@@ -13,7 +13,10 @@ class App extends Component {
     const { data } = this.state;
     // update state
     this.setState({
-      data: [...data, { item: item, dateTime: Date.now()}],
+      data: [...data, {
+        item: item,
+        dateTime: Date.now(),
+        isActive: false}],
     });
   };
 
@@ -21,16 +24,23 @@ class App extends Component {
     this.setState({inputState: value});
   };
 
-  removeItem = (item) => {
+  changeActive(index){
+    const data = [...this.state.data];
+    // this.setState({data: [...data] });
+    data.find(item => item.indexOf(index))
+    console.log(data);
+  }
+
+  removeItem(item){
+    const parsedIndex = parseFloat(item);
     // backup state
-    // debugger;
-    console.log(item, this.state);
-    // const data = [...this.state.data];
-    //fix issue
-    // delete data[item];
-    // update state
-    // this.setState([data]);
-    // console.log(data[item]);
+    const data = [...this.state.data];
+    // //fix issue
+    if(parsedIndex !== -1){
+      data.splice(parsedIndex, 1);
+      // update state
+      this.setState({data: [...data] });
+    }
   };
 
   render() {
@@ -45,10 +55,12 @@ class App extends Component {
           <div className="container">
             {Object.keys(this.state.data).map((key, i) => (
                 <ListItems
-                    removeItem={this.removeItem}
+                    removeItem={this.removeItem.bind(this)}
                     key={key}
                     index={key}
+                    isActive={this.state.isActive}
                     items={this.state.data[i]}
+                    changeActive={this.changeActive.bind(this)}
                 />
               ))
             }

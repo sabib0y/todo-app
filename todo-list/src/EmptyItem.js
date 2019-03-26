@@ -13,7 +13,7 @@ class EmptyItem extends Component {
         this.inputRef.current.focus();
     };
 
-    passValue(){
+    passValue = () => {
         this.props.updateInputState(this.inputRef.current.value);
     };
 
