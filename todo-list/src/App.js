@@ -15,27 +15,25 @@ class App extends Component {
     this.setState({
       data: [...data, { item: item, dateTime: Date.now()}],
     });
-    // this.updateList();
   };
 
-  // updateList() {
-  //   const { data } = this.state;
-  //
-  //   console.log('listArr...', data)
-  // }
+  updateInputState = (value) => {
+    this.setState({inputState: value});
+  };
 
-
-  resetField(){
-
-  }
-
-  handleRemove() {
-    console.log('deleting')
-  }
+  removeItem = (item) => {
+    // backup state
+    // debugger;
+    console.log(item, this.state);
+    // const data = [...this.state.data];
+    //fix issue
+    // delete data[item];
+    // update state
+    // this.setState([data]);
+    // console.log(data[item]);
+  };
 
   render() {
-    const { data } = this.state;
-
     return (
       <div className="App">
         <div className="note-wrapper">
@@ -47,8 +45,9 @@ class App extends Component {
           <div className="container">
             {Object.keys(this.state.data).map((key, i) => (
                 <ListItems
-                    handleRemove={this.handleRemove}
+                    removeItem={this.removeItem}
                     key={key}
+                    index={key}
                     items={this.state.data[i]}
                 />
               ))
@@ -57,6 +56,7 @@ class App extends Component {
             <EmptyItem
                 addItem={this.addItem}
                 value={this.state.inputState}
+                updateInputState={this.updateInputState}
             />
           </div>
           </div>

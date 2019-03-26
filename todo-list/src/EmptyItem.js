@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 
 class EmptyItem extends Component {
-    constructor(){
-        super();
-    }
     inputRef = React.createRef();
 
     handleClick = () => {
-        const inputVal = this.inputRef.current.value;
-         if(inputVal){
+        let inputVal = this.inputRef.current.value;
+        if(inputVal){
             this.props.addItem(inputVal)
-         }
-        this.inputRef.target.reset();
+        }
+        this.props.updateInputState('');
+        this.inputRef.current.value = '';
+        this.inputRef.current.focus();
     };
 
+    passValue(){
+        this.props.updateInputState(this.inputRef.current.value);
+    };
 
     render() {
     return (
@@ -24,6 +26,8 @@ class EmptyItem extends Component {
                 type="text"
                 placeholder="next item"
                 ref={this.inputRef}
+                value={this.props.inputState}
+                onChange={this.passValue}
             />
             <span className="button" onClick={this.handleClick}>
                 arrow button

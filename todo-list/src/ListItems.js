@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
 
 class ListItems extends Component {
-  render() {
-    return (
-        <div className="input-block">
-            <div className="item-wrapper">
-                <span className="checkbox"><input type="checkbox"/></span>
-                <p className="item">{this.props.items.item}</p>
-                <span className="button" onClick={this.props.handleRemove}>
+    // handleRemove = (e) => {
+    //     e.preventDefault();
+    //     this.props.removeItem(this.props.items);
+    // };
 
-            </span>
-            </div>
-        </div>
-    );
+  render() {
+      if (this.props.items.item !== null){
+          return (
+              <div className="input-block li" >
+                  <div className="item-wrapper">
+                      <span className="checkbox"><input type="checkbox"/></span>
+                      < input
+                          type='text'
+                          className="item"
+                          defaultValue={this.props.items.item}
+                      />
+                      <button
+                          className="button"
+                          onClick={() => {this.props.removeItem(this.props.index)}}
+                      >
+                          remove
+                      </button>
+                  </div>
+              </div>
+          );
+      }
+
   }
 }
 
