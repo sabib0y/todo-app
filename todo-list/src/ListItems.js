@@ -8,19 +8,19 @@ class ListItems extends Component {
 
 
   render() {
-      if (this.props.items.item !== null){
-          return (
-              <div className="input-block li" >
-                  <div className="item-wrapper">
-                      <span
-                          className="checkbox"
-                      >
-                          <input
-                              type="checkbox"
-                              checked={this.props.isActive ? 'checked' : ''}
-                              onChange={this.props.changeActive(this.props.index)}
-                          />
-                      </span>
+      return (
+          <div className="input-block li" >
+              <div className="item-wrapper">
+                  <span className="checkbox">
+                      <input
+                          type="checkbox"
+                          value={this.props.items.item}
+                          checked={this.props.isActive ? 'checked' : ''}
+                          onChange={this.props.handleChange}
+                      />
+                  </span>
+
+                  <div>
                       < input
                           type='text'
                           className="item"
@@ -28,15 +28,14 @@ class ListItems extends Component {
                       />
                       <button
                           className="button"
-                          onClick={() => {this.props.removeItem(this.props.index)}}
+                          onClick={this.props.removeItem}
                       >
                           remove
                       </button>
                   </div>
               </div>
-          );
-      }
-
+          </div>
+      );
   }
 }
 

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.scss';
 import EmptyItem from './EmptyItem';
 import ListItems from './ListItems';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 class App extends Component {
   state = {
@@ -24,12 +26,23 @@ class App extends Component {
     this.setState({inputState: value});
   };
 
-  changeActive(index){
+  handleChange = (event) => {
+    // backup state
     const data = [...this.state.data];
-    // this.setState({data: [...data] });
-    data.find(item => item.indexOf(index))
-    console.log(data);
-  }
+    // data.forEach(listItem => {
+    //   if(listItem.item === e.target.value)
+    //     listItem.isActive = !listItem.isActive;
+    // });
+    // //fix issue
+    // const mmm = data.map(item => return (
+    //     item[parsedIndex].
+    // ))
+    //   data.splice(parsedIndex, 1);
+      // update state
+      // this.setState({data: [...data] });
+    const target = event.target.name;
+    console.log(target);
+  };
 
   removeItem(item){
     const parsedIndex = parseFloat(item);
@@ -60,7 +73,7 @@ class App extends Component {
                     index={key}
                     isActive={this.state.isActive}
                     items={this.state.data[i]}
-                    changeActive={this.changeActive.bind(this)}
+                    handleChange={this.handleChange}
                 />
               ))
             }

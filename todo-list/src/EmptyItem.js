@@ -22,16 +22,18 @@ class EmptyItem extends Component {
       <div className="empty input-block">
         <div className="item-wrapper">
             <span className="fake-checkbox"></span>
-            <input
-                type="text"
-                placeholder="next item"
-                ref={this.inputRef}
-                value={this.props.inputState}
-                onChange={this.passValue}
-            />
-            <span className="button" onClick={this.handleClick}>
-                arrow button
-            </span>
+            <div>
+                <input
+                    type="text"
+                    placeholder="next item"
+                    ref={this.inputRef}
+                    value={this.props.inputState}
+                    onChange={this.passValue}
+                />
+                <span className="button" onClick={this.handleClick}>
+                    arrow button
+                </span>
+            </div>
         </div>
       </div>
     );
