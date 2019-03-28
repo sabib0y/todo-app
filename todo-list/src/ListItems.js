@@ -18,9 +18,10 @@ class ListItems extends Component {
                           checked={this.props.isActive ? 'checked' : ''}
                           onChange={this.props.handleChange}
                       />
+                      <span className="fake-box"></span>
                   </span>
 
-                  <div>
+                  <div className="field-wrapper">
                       < input
                           type='text'
                           className="item"

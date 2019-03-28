@@ -47,11 +47,46 @@ h1{
 
 .item-wrapper{
   display: flex;
+  align-items: flex-start;
+  font-family: 'Open Sans', sans-serif;
+
+  input, textarea, select, button{
+    font-family: 'Open Sans', sans-serif;
+  }
+
 
   > div {
     width: 100%;
     border-bottom: 1px solid #b4daff;
     padding-bottom: 0.8rem;
+  }
+
+  .checkbox{
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+
+    input{
+      opacity: 0;
+    }
+
+    .fake-box{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      border: 2px solid #484848;
+      left: 0;
+      top: 1rem;
+    }
+  }
+
+  .field-wrapper{
+    input{
+      background: transparent;
+      border: none;
+      padding: 0 1.4rem;
+      font-size: 2rem;
+    }
   }
 }
 
