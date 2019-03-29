@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faArrowAltCircleUp} from "@fortawesome/free-solid-svg-icons";
 
 class EmptyItem extends Component {
     inputRef = React.createRef();
@@ -30,8 +32,8 @@ class EmptyItem extends Component {
                     value={this.props.inputState}
                     onChange={this.passValue}
                 />
-                <span className="button" onClick={this.handleClick}>
-                    arrow button
+                <span className="add" onClick={this.handleClick}>
+                    <FontAwesomeIcon icon={faArrowAltCircleUp} />
                 </span>
             </div>
         </div>

@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import EmptyItem from './EmptyItem';
 import ListItems from './ListItems';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
 
 class App extends Component {
   state = {
@@ -20,28 +19,27 @@ class App extends Component {
         dateTime: Date.now(),
         isActive: false}],
     });
+    console.log(data);
+    // console.log(data['isActive']);
   };
 
   updateInputState = (value) => {
     this.setState({inputState: value});
   };
 
-  handleChange = (event) => {
+  handleChange = (e) => {
+    const value = parseFloat(e.target.value);
     // backup state
     const data = [...this.state.data];
-    // data.forEach(listItem => {
-    //   if(listItem.item === e.target.value)
-    //     listItem.isActive = !listItem.isActive;
-    // });
-    // //fix issue
-    // const mmm = data.map(item => return (
-    //     item[parsedIndex].
-    // ))
-    //   data.splice(parsedIndex, 1);
+
+    //run process
+    data.forEach(listItem => {
+      if(listItem.dateTime === value)
+        listItem.isActive = !listItem.isActive;
+    });
+
       // update state
-      // this.setState({data: [...data] });
-    const target = event.target.name;
-    console.log(target);
+      this.setState({[data]: [...data] });
   };
 
   removeItem(item){
@@ -71,7 +69,7 @@ class App extends Component {
                     removeItem={this.removeItem.bind(this)}
                     key={key}
                     index={key}
-                    isActive={this.state.isActive}
+                    isActive={this.state.data['isActive']}
                     items={this.state.data[i]}
                     handleChange={this.handleChange}
                 />

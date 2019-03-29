@@ -1,5 +1,6 @@
 //font-family: 'Open Sans', sans-serif;
 //font-family: 'Quicksand', sans-serif;
+@import './mixins';
 
 *{
   box-sizing: border-box;
@@ -47,18 +48,35 @@ h1{
 
 .item-wrapper{
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   font-family: 'Open Sans', sans-serif;
 
   input, textarea, select, button{
     font-family: 'Open Sans', sans-serif;
   }
 
+  .draggable{
+    margin-right: 1.5rem;
+    width: 1rem;
+    height: 1rem;
+
+    svg{
+      width: 100%;
+      height: 100%;
+      display: block;
+      @include transHover;
+      cursor: grab;
+    }
+
+  }
+
 
   > div {
     width: 100%;
     border-bottom: 1px solid #b4daff;
-    padding-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.3rem;
   }
 
   .checkbox{
@@ -68,15 +86,32 @@ h1{
 
     input{
       opacity: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin: 0;
+      cursor: pointer;
+
+      &:checked + fake-box{
+
+      }
     }
 
     .fake-box{
       width: 100%;
       height: 100%;
-      position: absolute;
+      display: block;
       border: 2px solid #484848;
-      left: 0;
-      top: 1rem;
+
+      svg{
+        width: 100%;
+        height: 100%;
+        display: block;
+        padding: 0.3rem;
+      }
     }
   }
 
@@ -88,13 +123,61 @@ h1{
       font-size: 2rem;
     }
   }
+
+  .remove{
+    background: transparent;
+    border: none;
+    margin-left: auto;
+    cursor: pointer;
+    @include transHover;
+  }
+
+  .add{
+    margin-left: auto;
+    width: 2rem;
+
+    svg{
+      width: 100%;
+      color: #484848;
+      @include transHover;
+    }
+  }
 }
 
 .input-block{
   font-size: 2.5rem;
+  margin-top: 2rem;
+}
 
-  &.empty{
-    color: #ababab;
+.empty{
+  color: #ababab;
+  padding-left: 2.5rem;
+
+  .fake-checkbox{
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid #dbdbdb;
+  }
+
+  input{
+    width: 100%;
+    margin: 0 1rem;
+    font-size: 2rem;
+    background: transparent;
+    border: none;
+    outline: none;
+
+    @include placeholder{
+      color: #666666 !important;
+    }
+  }
+
+  .item-wrapper {
+    border-bottom: 1px solid #b4daff;
+
+    div{
+      border: none;
+    }
   }
 }
 

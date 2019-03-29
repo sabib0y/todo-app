@@ -1,0 +1,29 @@
+//@mixin placeholder {
+//  ::-webkit-input-placeholder {@content}
+//  :-moz-placeholder           {@content}
+//  :-ms-input-placeholder      {@content}
+//  ::-moz-placeholder          {@content}
+//}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  ::-moz-placeholder {@content}
+  ::-ms-placeholder {@content}
+  ::placeholder {@content}
+}
+
+@mixin transHover{
+  opacity: 1;
+  transition: all .4s ease-out;
+  cursor: pointer;
+
+  &:hover{
+    opacity: 0.6;
+  }
+}
+
+//@include placeholder {
+//  font-style:italic;
+//  color: white;
+//  font-weight:100;
+//}
