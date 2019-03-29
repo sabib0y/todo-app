@@ -3,15 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faBars, faCheck, faTimes} from "@fortawesome/free-solid-svg-icons";
 
 class ListItems extends Component {
-    // handleRemove = (e) => {
-    //     e.preventDefault();
-    //     this.props.removeItem(this.props.items);
-    // };
+    triggerChange = (e) => {
+        this.props.handleInputChange(e, this.props.index);
+    };
 
 
   render() {
       return (
-          <div className="input-block li" >
+          <div className={`${this.props.items.isActive ? 'checked' : ''} input-block`}>
               <div className="item-wrapper">
                   <span className="draggable">
                       <FontAwesomeIcon icon={faBars} />
@@ -23,7 +22,7 @@ class ListItems extends Component {
                           type="checkbox"
                           value={this.props.items.dateTime}
                           onChange={this.props.handleChange}
-                          checked={this.props.isActive ? 'checked' : ''}
+                          checked={this.props.items.isActive ? 'checked' : ''}
                       />
                       <span className="fake-box">
                           <FontAwesomeIcon icon={faCheck} />
@@ -33,7 +32,8 @@ class ListItems extends Component {
                       < input
                           type='text'
                           className="item"
-                          defaultValue={this.props.items.item}
+                          onChange={this.triggerChange}
+                          value={this.props.items.item}
                       />
                       <button
                           className="remove"

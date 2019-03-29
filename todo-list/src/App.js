@@ -19,8 +19,6 @@ class App extends Component {
         dateTime: Date.now(),
         isActive: false}],
     });
-    console.log(data);
-    // console.log(data['isActive']);
   };
 
   updateInputState = (value) => {
@@ -29,17 +27,20 @@ class App extends Component {
 
   handleChange = (e) => {
     const value = parseFloat(e.target.value);
-    // backup state
     const data = [...this.state.data];
-
-    //run process
     data.forEach(listItem => {
       if(listItem.dateTime === value)
         listItem.isActive = !listItem.isActive;
     });
+    this.setState({data: [...data] });
+  };
 
-      // update state
-      this.setState({[data]: [...data] });
+  handleInputChange = (e, index) => {
+    const value = e.target.value;
+    const data = [...this.state.data];
+    data[index].item = value;
+    this.setState({data: [...data] });
+    console.log(data);
   };
 
   removeItem(item){
@@ -49,9 +50,9 @@ class App extends Component {
     // //fix issue
     if(parsedIndex !== -1){
       data.splice(parsedIndex, 1);
-      // update state
-      this.setState({data: [...data] });
     }
+    // update state
+    this.setState({data: [...data] });
   };
 
   render() {
@@ -69,9 +70,9 @@ class App extends Component {
                     removeItem={this.removeItem.bind(this)}
                     key={key}
                     index={key}
-                    isActive={this.state.data['isActive']}
                     items={this.state.data[i]}
                     handleChange={this.handleChange}
+                    handleInputChange={this.handleInputChange}
                 />
               ))
             }
